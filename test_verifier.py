@@ -24,6 +24,11 @@ class TestVerifier(unittest.TestCase):
         with self.assertRaises(ValueError):
             Verifier.verify_json("./test_examples/test5.json")
 
+    def test_verify_json_invalid_PolicyName_regex(self):
+        # test6.json has a "PolicyName" field that does not match the regex
+        with self.assertRaises(ValueError):
+            Verifier.verify_json("./test_examples/test6.json")
+
     def test_verify_json_file_not_found(self):
         # path_not_existent.json does not exist
         with self.assertRaises(FileNotFoundError):
